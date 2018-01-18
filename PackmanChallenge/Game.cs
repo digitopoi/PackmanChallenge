@@ -20,11 +20,9 @@ namespace PackmanChallenge
                 if (Packman.Lives <= 0)
                     break;
 
-                if (Packman.Points >= 10000 && Packman.CanGainLives == true)
+                if (Packman.Points >= 10000)
                 {
                     Packman.Lives++;
-                    Packman.LivesGained++;
-                    Packman.CanGainLives = false;
                 }
 
                 var currentItem = GameArray[i];

@@ -11,8 +11,6 @@ namespace PackmanChallenge
         public int Points { get; set; }
         public byte Lives { get; set; }
         public int BonusFactor { get; set; }
-        public int LivesGained { get; set; }
-        public bool CanGainLives { get; set; }
 
         public Packman()
         {
