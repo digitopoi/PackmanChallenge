@@ -8,11 +8,17 @@ namespace PackmanChallenge
 {
     public class Packman
     {
-        public int Points { get; set; } = 5000;
-        public byte Lives { get; set; } = 3;
-        public bool PowerPellet { get; set; } = false;
-        public int BonusFactor { get; set; } = 0;
-        public int LivesGained { get; set; }
-        public bool CanGainLife { get; set; }
+        public int Points { get; set; }
+        public byte Lives { get; set; }
+        public int BonusFactor { get; set; }
+        public int LivesGained { get; set; } = 1;
+        public bool CanGainLives { get; set; }
+
+        public Packman()
+        {
+            Points = 5000;
+            Lives = 3;
+            BonusFactor = 0;
+        }
     }
 }

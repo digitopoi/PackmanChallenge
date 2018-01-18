@@ -15,42 +15,44 @@ namespace PackmanChallenge
             var Ghost = new Ghost();
             var GameArray = GetGameArray();
 
-            //while (Packman.Lives > 0 || Packman.Points > 0 || GameArray[])
-            //{
-                if (Packman.Points >= 10000)
+            for (var i = 0; i < GameArray.Length; i++)
+            {
+                if (Packman.Lives <= 0)
+                    break;
+
+                if (Packman.Points >= 10000 && Packman.CanGainLives == true)
                 {
                     Packman.Lives++;
-                    Packman.CanGainLife = false;
+                    Packman.LivesGained++;
+                    Packman.CanGainLives = false;
                 }
 
-                for (var i = 0; i < 10; i++)
+                var currentItem = GameArray[i];
+
+                switch (currentItem)
                 {
-                    var currentItem = GameArray[i];
-
-                    switch (currentItem)
-                    {
-                        case "Dot":
-                            Packman.Points += 10;
-                            break;
-                        case "InvincibleGhost":
-                            Packman.Lives -= 1;
-                            break;
-                        case "VulnerableGhost":
-                            Packman.Points += Ghost.BonusFactor;
-                            Ghost.BonusFactor *= 2;
-                            break;
-                        default:
-                            var fruit = BonusFruit.Fruit[currentItem];
-                            Packman.Points += fruit;
-                            break;
-                    }
-
-                Console.WriteLine("Packman Points: ", Packman.Points);
-                    
+                    case "Dot":
+                        Packman.Points += 10;
+                        break;
+                    case "InvincibleGhost":
+                        Packman.Lives -= 1;
+                        break;
+                    case "VulnerableGhost":
+                        Packman.Points += Ghost.BonusFactor;
+                        Ghost.BonusFactor *= 2;
+                        break;
+                    default:
+                        var fruit = BonusFruit.Fruit[currentItem];
+                        Packman.Points += fruit;
+                        break;
                 }
-                
-            //}
-            
+            }
+
+            var points = Packman.Points;
+            var livesGained = Packman.LivesGained;
+
+            Console.WriteLine($"Packman points: {points}");
+
         }
 
         public static string[] GetGameArray()
