@@ -49,9 +49,10 @@ namespace PackmanChallenge
             }
 
             var points = Packman.Points;
-            var livesGained = Packman.LivesGained;
-
+            int livesGained = Packman.Points > 10000 ? 1 : 0;
+            
             Console.WriteLine($"Packman points: {points}");
+            Console.WriteLine($"Packman lives gained: {livesGained}");
 
         }
 
